@@ -91,9 +91,11 @@ struct ContentView: View {
             if isPrime == isPrime {
                 correctAnswers += 1
                 isCorrect = true
+                feedbackMessage = "Congrats! You're correct. Correct Answers: \(correctAnswers)"
             } else {
                 wrongAnswers += 1
                 isCorrect = false
+                feedbackMessage = "You are incorrect. Correct Answers: \(correctAnswers)"
             }
             
             attempts += 1
