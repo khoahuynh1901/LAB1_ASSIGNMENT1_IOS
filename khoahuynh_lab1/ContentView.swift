@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var attempts = 0
     @State private var showResult = false
     @State private var isCorrect: Bool? = nil
-    @State private var countdown = 5  // ⏳ Countdown timer
+    @State private var countdown = 5  // Countdown timer
     @State private var timer: Timer? = nil
     
     
@@ -25,16 +25,35 @@ struct ContentView: View {
                     .foregroundColor(countdown > 2 ? .blue : .red)
                     .bold()
                 
-                Text("Is this number Prime?")
+                Text("Is this Prime?")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
                 Text("\(number)")
                     .font(.system(size: 80, weight: .bold))
                 
-                
+                HStack {
+                    Button(action: {
+                        checkAnswer(isPrime: true)
+                    }) {
+                        Text("Prime")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                     
-                    
+                    Button(action: {
+                        checkAnswer(isPrime: false)
+                    }) {
+                        Text("Not Prime")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
                 .padding(.horizontal)
                 
@@ -45,8 +64,14 @@ struct ContentView: View {
                         .foregroundColor(result ? .green : .red)
                 }
             }
-           
-        
+            .padding()
+            .alert("Game Summary", isPresented: $showResult) {
+                Button("OK", action: resetGame)
+            } message: {
+                Text("Correct: \(correctAnswers)\nWrong: \(wrongAnswers)")
+            }
+            .onAppear(perform: startTimer)
+        }
         
         // Prime Number Check
         func isPrime(_ num: Int) -> Bool {
@@ -57,7 +82,7 @@ struct ContentView: View {
             return true
         }
         
-        // Check User's Answer
+        //Check User's Answer
         func checkAnswer(isPrime: Bool) {
             timer?.invalidate()
             
@@ -92,7 +117,7 @@ struct ContentView: View {
             nextRound()
         }
         
-        // Start Timer with Countdown
+        //  Start Timer with Countdown
         func startTimer() {
             countdown = 5  // Reset countdown
             timer?.invalidate()  // Stop any previous timer
@@ -121,3 +146,4 @@ struct ContentView: View {
             ContentView()
         }
     }
+
