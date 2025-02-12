@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var isCorrect: Bool? = nil
     @State private var countdown = 5  // Countdown timer
     @State private var timer: Timer? = nil
+    @State private var feedbackMessage = ""
+
     
     
     var body: some View {
