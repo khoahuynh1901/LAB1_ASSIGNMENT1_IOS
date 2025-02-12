@@ -1,7 +1,7 @@
 //  ContentView.swift
 //  khoahuynh_lab1
 //  Created by Khoa Huynh Ly Nhut on 2025-02-12.
-//  Lab 1 - assignment 1
+//  Lab 1 - assignment 1 101418497
 
 
 import SwiftUI
