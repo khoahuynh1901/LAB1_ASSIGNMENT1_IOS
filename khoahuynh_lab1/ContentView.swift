@@ -1,9 +1,9 @@
-//
 //  ContentView.swift
 //  khoahuynh_lab1
-//
 //  Created by Khoa Huynh Ly Nhut on 2025-02-12.
-//
+//  Lab 1 - assignment 1
+
+
 import SwiftUI
 
 import SwiftUI
@@ -126,7 +126,6 @@ struct ContentView: View {
         feedbackMessage = ""  // Clear feedback message for next round
         startTimer()
     }
-    
     //  Reset the Game
     func resetGame() {
         correctAnswers = 0
@@ -160,7 +159,7 @@ struct ContentView: View {
     }
 }
 
-// 📱 Preview
+//Preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
