@@ -81,10 +81,16 @@ struct ContentView: View {
         func nextRound() {
             number = Int.random(in: 1...100)
             isCorrect = nil
-           
+            
         }
         
-        
+        // Reset the Game
+        func resetGame() {
+            correctAnswers = 0
+            wrongAnswers = 0
+            attempts = 0
+            nextRound()
+        }
         
     }
 
