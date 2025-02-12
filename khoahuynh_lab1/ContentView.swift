@@ -21,7 +21,18 @@ struct ContentView: View {
     
     var body: some View {
             VStack(spacing: 20) {
-                // 🔥 Countdown Timer at the Top
+                
+                
+                // Message feedback
+                if !feedbackMessage.isEmpty {
+                        Text(feedbackMessage)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(isCorrect == true ? .green : .red)
+                            .padding()
+                    }
+                
+                // Countdown Timer at the Top
                 Text("Time Left: \(countdown) sec")
                     .font(.title)
                     .foregroundColor(countdown > 2 ? .blue : .red)
