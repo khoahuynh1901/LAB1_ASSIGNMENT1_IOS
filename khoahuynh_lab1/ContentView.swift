@@ -81,7 +81,7 @@ struct ContentView: View {
         func nextRound() {
             number = Int.random(in: 1...100)
             isCorrect = nil
-            
+            startTimer()
         }
         
         // Reset the Game
@@ -92,6 +92,28 @@ struct ContentView: View {
             nextRound()
         }
         
+        // Start Timer with Countdown
+        func startTimer() {
+            countdown = 5  // Reset countdown
+            timer?.invalidate()  // Stop any previous timer
+            
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                if countdown > 0 {
+                    countdown -= 1  // Update timer every second
+                } else {
+                    timer?.invalidate()
+                    wrongAnswers += 1
+                    attempts += 1
+                    isCorrect = false
+                    
+                    if attempts % 10 == 0 {
+                        showResult = true
+                    } else {
+                        nextRound()
+                    }
+                }
+            }
+        }
     }
 
     struct ContentView_Previews: PreviewProvider {
